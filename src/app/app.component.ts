@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [FormsModule],
+  template: `
+    <article>
+      <h1>Blog Post</h1>
+      <section>
+
+        <label for="title">Post Title </label>
+        <input type="text" id="title" [(ngModel)]="title" />
+
+        <label for="text">Post Body</label>
+        <textarea id="body" [(ngModel)]="body"></textarea>
+
+      </section>
+      <section>
+        <p>{{ title }}</p>
+        <p>{{ body }}</p>
+      </section>
+    </article>
+  `,
 })
 export class AppComponent {
-  title = 'template-driven-forms';
+  title = '';
+  body = '';
 }
